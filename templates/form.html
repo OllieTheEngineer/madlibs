@@ -6,7 +6,9 @@
     <form action="/story">
         {% for prompt in prompts %}
             <p>{{ prompt }}:
+                <label>
                 <input name="{{ prompt }}">
+                </label>
             </p>
         {% endfor %}
         <button>Submit form</button>
