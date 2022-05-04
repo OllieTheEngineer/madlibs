@@ -37,9 +37,12 @@ class Story:
 
 # Here's a story to get you started
 
+answer = {"place": "Paris", "noun": 'dragon', "verb": 'roast', "adjective": 'fire', "plural_noun": 'bacons'}
 
 story = Story(
     ["place", "noun", "verb", "adjective", "plural_noun"],
     """Once upon a time in a long-ago {place}, there lived a
        large {adjective} {noun}. It loved to {verb} {plural_noun}."""
 )
+
+print(story.generate(answer))
