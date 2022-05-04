@@ -4,11 +4,11 @@
 {% block content %}
     <h1>Madlibs</h1>
     <form action="/story">
-        {% for fillout in form %}
-            <p>{{form}}:
-                <input name="{{form}}">
+        {% for prompt in prompts %}
+            <p>{{ prompt }}:
+                <input name="{{ prompt }}">
             </p>
-        {% endbfor %}
+        {% endfor %}
         <button>Submit form</button>
     </form>
 {% endblock %}

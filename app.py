@@ -2,8 +2,9 @@ from flask import Flask, request, render_template
 from flask_debugtoolbar import DebugToolbarExtension
 from stories import story
 
+
 app = Flask(__name__)
-app.config['OLLIE_KEY'] = "ollie"
+app.config['SECRET_KEY'] = "secret"
 app.debug = True
 # app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 debug = DebugToolbarExtension(app)
@@ -11,13 +12,14 @@ debug = DebugToolbarExtension(app)
 @app.route('/')
 def fill_form():
     """ Form to fill out"""
-    form = story.form
-    return render_template("form.html", form=form)
+    prompts = story.prompts
+    return render_template("form.html", prompts=prompts)
 
 @app.route('/story')
 def full_story():
-    words = story.generate(request.args)
-    return render_template("story.html", words=words)
+    """story that will print after submission"""
+    text = story.generate(request.args)
+    return render_template("story.html", text=text)
 
 if __name__ == "__main__":
   app.run(debug=True)
